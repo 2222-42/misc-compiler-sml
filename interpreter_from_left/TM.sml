@@ -2,7 +2,7 @@ structure TM =
 struct
     datatype D = R | L
     datatype S = B | I | O
-    datatype Q = M | N | START | H
+    datatype Q = M | N | START | CLEAN | BACK | H
     type delta = ((Q * S) * (Q * S * D)) list
     type program = Q * delta
     type tape = S list * S * S list
@@ -13,8 +13,12 @@ struct
                ((N, O), (N, O, R)),
                ((N, B), (M, B, L)),
                ((M, I), (M, O, L)),
-               ((M, O), (H, I, L)),
-               ((M, B), (H, I, L))
+               ((M, O), (CLEAN, I, L)),
+               ((M, B), (CLEAN, I, L)),
+               ((CLEAN, I), (CLEAN, I, L)),
+               ((CLEAN, O), (CLEAN, O, L)),
+               ((CLEAN, B), (BACK, B, L)),
+               ((BACK, B), (H, B, R))
              ]
             )
 end
