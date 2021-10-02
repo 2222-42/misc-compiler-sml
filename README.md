@@ -12,4 +12,4 @@
 
 - [著者のサポートページ](https://atsushiohori.github.io/ja/texts/compiler/)
 
-。そして、わからないことがあったら、ISSUEを作ろうと思う。
+。そして、わからないことがあったら、ISSUEを作ろうと思う。(筆者のgithub のrepositoryのISSUE機能は停止する予定とのこと)
