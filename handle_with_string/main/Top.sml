@@ -8,12 +8,14 @@ struct
         in
             readAndPrintLoop inStream
         end
+    fun subTop inStream =
+        (readAndPrintLoop inStream; TextIO.closeIn inStream)
+        handle ReadString.EOF => (TextIO.closeIn inStream)
     fun top file =
         let
             val inStream = TextIO.openIn file
         in
-            readAndPrintLoop inStream; (* ここでerror起きるとcloseされなくない？ *)
-            TextIO.closeIn inStream
+            subTop inStream
         end
         handle ReadString.EOF => ()
 end
