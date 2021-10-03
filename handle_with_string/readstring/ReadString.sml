@@ -5,7 +5,7 @@ struct
         if TextIO.endOfStream inStream then raise EOF
         else case TextIO.lookahead inStream
               of SOME c =>
-                 if Char.isSpace c then (TextIO.input inStream; skipSpaces inStream)
+                 if Char.isSpace c then (TextIO.input1 inStream; skipSpaces inStream)
                  else ()
                | NONE => ()
 
