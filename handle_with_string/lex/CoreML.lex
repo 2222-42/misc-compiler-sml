@@ -5,11 +5,11 @@ fun atoi s = valOf (Int.fromString s)
 %structure CoreMLLex
 alpha = [A-Za-z];
 digit = [0-9];
-id = {alpha}({alpha}|{digit})*
+id = {alpha}({alpha}|{digit})*;
 num = {digit}+;
 frac = "."{num};
 exp = [eE](~?){num};
-real = (~?)((){num}{frac}?{exp})|({num}{frac}{exp}?));
+real = (~?)(({num}{frac}?{exp})|({num}{frac}{exp}?));
 ws = "\ " | "\t" | "\r\n" | "\n" | "\r";
 %%
 \"[^"]*\" => (Token.STRING
