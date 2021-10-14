@@ -1,21 +1,23 @@
 structure Top =
 struct
-    fun readAndPrintLoop inStream =
+    fun readAndPrintLoop lexer =
         let
-            val _ = ReadString.skipSpaces inStream
-            val s = ReadString.readString inStream
-            val _ = print (s ^ "\n")
+            val token = lexer()
+            val _ = print (Token.toString token ^ "\n")
         in
-            readAndPrintLoop inStream
+            readAndPrintLoop lexer
         end
-    fun subTop inStream =
-        (readAndPrintLoop inStream; TextIO.closeIn inStream)
-        handle ReadString.EOF => (TextIO.closeIn inStream)
+    (*    fun subTop (lexer, inStream) =
+        (readAndPrintLoop lexer; TextIO.closeIn inStream)
+        handle Lexer.EOF => (TextIO.closeIn inStream)*)
     fun top file =
         let
             val inStream = TextIO.openIn file
+            val lexer = Lexer.makeLexer inStream
         in
-            subTop inStream
+            readAndPrintLoop lexer;
+            TextIO.closeIn inStream
+                           (* readAndPrintLoopのところで例外が起きたら、closeが適切に走らないのでは、という疑問がある。*)
         end
-        handle ReadString.EOF => ()
+        handle Lexer.EOF => ()
 end
