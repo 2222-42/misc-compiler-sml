@@ -1,4 +1,5 @@
 _require "basis.smi"
+_require "reify.smi"
 structure Converter =
 struct
     type S = string
@@ -14,4 +15,5 @@ struct
     val addQ : delta -> state -> (state list * state list * Delta) -> (state list * state list * Delta)
     val subsets : delta -> ( state list * state list * Delta ) -> (state list * Delta)
     val toDFA : NFA -> DFA
+    val run : unit -> unit
 end
