@@ -46,7 +46,6 @@ struct
             val transitive = tc ((a, a)::(eRelationFromDelta delta a))
 
         in
-            Dynamic.pp transitive;
             isolate (targetOf transitive a)
         end
 
@@ -63,7 +62,6 @@ struct
                                   (fn sqlist => targetOf sqlist ws)
                                   listOfSQListMatchedP
         in
-            Dynamic.pp matchedSqss;
             flatten (flatten matchedSqss)
         end
                 (* deltaの第一の要素がPの要素と一致するもの *)
@@ -77,7 +75,6 @@ struct
             val Q1' = if mem(A', A::Q1@Q2) then Q1
                       else A'::Q1
         in
-            Dynamic.pp {Q1' = Q1', Q2 = (s, A')::O};
             (Q1', (s, A')::O)
         end
 
@@ -104,10 +101,10 @@ struct
     fun toDFA ({Q = qList, S = SList, delta = d, qQ = qQ, F = F}:NFA) =
         let
             val A = Cl (d, [qQ])
-            val (QList, dList) = (Dynamic.pp {A = [A]}(*only for test*); subsets d ([A], nil, nil))
-            val FF = (Dynamic.pp {QList = QList}(* only for test *);List.filter
+            val (QList, dList) = subsets d ([A], nil, nil)
+            val FF = List.filter
                          (fn q => not(intersection (q, F) = []))
-                         QList)
+                         QList
         in
             {Q = QList, S = SList, Delta = dList, Q0 = A, F = FF}
         end
