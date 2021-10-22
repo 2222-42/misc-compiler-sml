@@ -1,0 +1,19 @@
+_require "basis.smi"
+_require "reify.smi"
+structure Converter =
+struct
+    type S = string
+    type Q = int
+    type delta = (Q * (S * Q list) list) list
+    type NFA = {Q:Q list, S:S list, delta:delta, qQ:Q, F:Q list}
+    type state = Q list
+    type Delta = (state * (S * state) list) list
+    type DFA = {Q:state list, S:S list, Delta:Delta, Q0:state, F:state list}
+    type Omega = (S * Q list) list
+    val deltaD : delta -> (state * S) -> Q list
+    val addS : delta -> (state * S) -> (state list * state list * Omega) -> (state list * Omega)
+    val addQ : delta -> state -> (state list * state list * Delta) -> (state list * state list * Delta)
+    val subsets : delta -> ( state list * state list * Delta ) -> (state list * Delta)
+    val toDFA : NFA -> DFA
+    val run : unit -> unit
+end
