@@ -7,17 +7,18 @@ struct
         in
             readAndPrintLoop lexer
         end
-    (*    fun subTop (lexer, inStream) =
-        (readAndPrintLoop lexer; TextIO.closeIn inStream)
-        handle Lexer.EOF => (TextIO.closeIn inStream)*)
+    fun subTop inStream =
+        let
+            val lexer = Lexer.makeLexer inStream
+        in
+            (readAndPrintLoop lexer; TextIO.closeIn inStream)
+        end
+        handle Lexer.EOF => (TextIO.closeIn inStream)
     fun top file =
         let
             val inStream = TextIO.openIn file
-            val lexer = Lexer.makeLexer inStream
         in
-            readAndPrintLoop lexer;
-            TextIO.closeIn inStream
-                           (* readAndPrintLoopのところで例外が起きたら、closeが適切に走らないのでは、という疑問がある。*)
+            subTop inStream
         end
         handle Lexer.EOF => ()
 end
