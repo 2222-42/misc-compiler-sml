@@ -5,7 +5,7 @@ struct
     datatype exp =
         EXPID of string | INT of int | STRING of string
         | TRUE | FALSE | EXPFN of string * exp
-        | EXPAPP of exp * exp | EXPAIR of exp * exp
+        | EXPAPP of exp * exp | EXPPAIR of exp * exp
         | EXPPROJ1 of exp | EXPPROJ2 of exp
         | EXPPRIM of prim * exp * exp
         | EXPIF of exp * exp * exp
