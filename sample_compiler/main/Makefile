@@ -2,19 +2,29 @@ SMLSHARP = smlsharp
 SMLFLAGS = -O2
 LIBS =
 all: Main
-Main: ../lex/Token.smi ../lex/CoreML.lex.smi ../lex/Lexer.smi Top.smi Main.smi \
- ../lex/Token.o ../lex/CoreML.lex.o ../lex/Lexer.o Top.o Main.o
+Main: ../parser/Syntax.smi ../parser/CoreML.grm.sig ../parser/CoreML.grm.smi \
+ ../parser/CoreML.lex.smi ../parser/Parser.smi Top.smi Main.smi \
+ ../parser/Syntax.o ../parser/CoreML.grm.o ../parser/CoreML.lex.o \
+ ../parser/Parser.o Top.o Main.o
 	$(SMLSHARP) $(LDFLAGS) -o Main Main.smi $(LIBS)
-../lex/Token.o: ../lex/Token.sml ../lex/Token.smi
-	$(SMLSHARP) $(SMLFLAGS) -o ../lex/Token.o -c ../lex/Token.sml
-../lex/CoreML.lex.o: ../lex/CoreML.lex.sml ../lex/Token.smi \
- ../lex/CoreML.lex.smi
-	$(SMLSHARP) $(SMLFLAGS) -o ../lex/CoreML.lex.o -c ../lex/CoreML.lex.sml
-../lex/Lexer.o: ../lex/Lexer.sml ../lex/Token.smi ../lex/CoreML.lex.smi \
- ../lex/Lexer.smi
-	$(SMLSHARP) $(SMLFLAGS) -o ../lex/Lexer.o -c ../lex/Lexer.sml
-Top.o: Top.sml ../lex/Token.smi ../lex/CoreML.lex.smi ../lex/Lexer.smi Top.smi
+../parser/Syntax.o: ../parser/Syntax.sml ../parser/Syntax.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../parser/Syntax.o -c ../parser/Syntax.sml
+../parser/CoreML.grm.o: ../parser/CoreML.grm.sml ../parser/Syntax.smi \
+ ../parser/CoreML.grm.sig ../parser/CoreML.grm.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../parser/CoreML.grm.o -c \
+ ../parser/CoreML.grm.sml
+../parser/CoreML.lex.o: ../parser/CoreML.lex.sml ../parser/Syntax.smi \
+ ../parser/CoreML.grm.sig ../parser/CoreML.grm.smi ../parser/CoreML.lex.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../parser/CoreML.lex.o -c \
+ ../parser/CoreML.lex.sml
+../parser/Parser.o: ../parser/Parser.sml ../parser/Syntax.smi \
+ ../parser/CoreML.grm.sig ../parser/CoreML.grm.smi ../parser/CoreML.lex.smi \
+ ../parser/Parser.smi
+	$(SMLSHARP) $(SMLFLAGS) -o ../parser/Parser.o -c ../parser/Parser.sml
+Top.o: Top.sml ../parser/Syntax.smi ../parser/CoreML.grm.sig \
+ ../parser/CoreML.grm.smi ../parser/CoreML.lex.smi ../parser/Parser.smi Top.smi
 	$(SMLSHARP) $(SMLFLAGS) -o Top.o -c Top.sml
-Main.o: Main.sml ../lex/Token.smi ../lex/CoreML.lex.smi ../lex/Lexer.smi \
+Main.o: Main.sml ../parser/Syntax.smi ../parser/CoreML.grm.sig \
+ ../parser/CoreML.grm.smi ../parser/CoreML.lex.smi ../parser/Parser.smi \
  Top.smi Main.smi
 	$(SMLSHARP) $(SMLFLAGS) -o Main.o -c Main.sml

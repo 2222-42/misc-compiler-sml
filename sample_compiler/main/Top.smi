@@ -1,8 +1,7 @@
 _require "basis.smi"
-_require "../lex/Token.smi"
-_require "../lex/Lexer.smi"
+_require "../parser/Syntax.smi"
+_require "../parser/Parser.smi"
 structure Top =
 struct
-    val subTop: TextIO.instream -> unit
     val top : string -> unit
 end

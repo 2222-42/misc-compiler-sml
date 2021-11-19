@@ -1,24 +1,28 @@
 structure Top =
 struct
-    fun readAndPrintLoop lexer =
+    fun readAndPrintLoop stream =
         let
-            val token = lexer()
-            val _ = print (Token.toString token ^ "\n")
+            val (dec, stream) = Parser.doParse stream
         in
-            readAndPrintLoop lexer
+            readAndPrintLoop stream
         end
-    fun subTop inStream =
+    (*fun subTop inStream =
         let
             val lexer = Lexer.makeLexer inStream
         in
             (readAndPrintLoop lexer; TextIO.closeIn inStream)
         end
-        handle Lexer.EOF => (TextIO.closeIn inStream)
+        handle Lexer.EOF => (TextIO.closeIn inStream)*)
     fun top file =
         let
-            val inStream = TextIO.openIn file
+            val inStream = case file of "" => TextIO.stdIn
+                                      | _ => TextIO.openIn file
+            val stream = Parser.makeStream inStream
         in
-            subTop inStream
+            readAndPrintLoop stream
+            handle Parser.EOF => ()
+                |  Parser.ParseError => print "Syntax error\n";
+            case file of "" => ()
+                      | _ => TextIO.closeIn inStream
         end
-        handle Lexer.EOF => ()
 end
