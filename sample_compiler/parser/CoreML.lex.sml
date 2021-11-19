@@ -396,63 +396,63 @@ in Vector.fromList(map g
 {fin = [], trans = 1},
 {fin = [(N 96)], trans = 0},
 {fin = [(N 96)], trans = 4},
-{fin = [(N 38)], trans = 4},
-{fin = [(N 45),(N 96)], trans = 6},
-{fin = [(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 8},
-{fin = [(N 45)], trans = 9},
-{fin = [(N 3),(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 11},
-{fin = [(N 45)], trans = 12},
-{fin = [(N 45)], trans = 13},
-{fin = [(N 8),(N 45)], trans = 6},
-{fin = [(N 45)], trans = 15},
-{fin = [(N 45)], trans = 16},
-{fin = [(N 13),(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 18},
-{fin = [(N 45)], trans = 19},
-{fin = [(N 17),(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 21},
-{fin = [(N 45)], trans = 22},
-{fin = [(N 29),(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 24},
-{fin = [(N 41),(N 45)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 26},
-{fin = [(N 45)], trans = 27},
-{fin = [(N 45),(N 55)], trans = 6},
-{fin = [(N 45),(N 58)], trans = 6},
-{fin = [(N 45)], trans = 30},
-{fin = [(N 45)], trans = 31},
-{fin = [(N 45)], trans = 32},
-{fin = [(N 45),(N 64)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 34},
-{fin = [(N 45),(N 69)], trans = 6},
-{fin = [(N 45)], trans = 36},
-{fin = [(N 45)], trans = 37},
-{fin = [(N 45),(N 74)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 39},
-{fin = [(N 45)], trans = 40},
-{fin = [(N 45),(N 78)], trans = 6},
-{fin = [(N 45),(N 96)], trans = 42},
-{fin = [(N 45)], trans = 43},
-{fin = [(N 45),(N 87)], trans = 6},
-{fin = [(N 66),(N 96)], trans = 45},
-{fin = [(N 81)], trans = 0},
-{fin = [(N 23),(N 96)], trans = 0},
-{fin = [(N 34),(N 96)], trans = 48},
-{fin = [(N 34)], trans = 48},
-{fin = [(N 83),(N 96)], trans = 0},
-{fin = [(N 25),(N 96)], trans = 0},
-{fin = [(N 31),(N 96)], trans = 0},
+{fin = [(N 90)], trans = 4},
+{fin = [(N 83),(N 96)], trans = 6},
+{fin = [(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 8},
+{fin = [(N 83)], trans = 9},
+{fin = [(N 60),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 11},
+{fin = [(N 83)], trans = 12},
+{fin = [(N 83)], trans = 13},
+{fin = [(N 56),(N 83)], trans = 6},
+{fin = [(N 83)], trans = 15},
+{fin = [(N 83)], trans = 16},
+{fin = [(N 51),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 18},
+{fin = [(N 83)], trans = 19},
+{fin = [(N 18),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 21},
+{fin = [(N 83)], trans = 22},
+{fin = [(N 14),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 24},
+{fin = [(N 46),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 26},
+{fin = [(N 83)], trans = 27},
+{fin = [(N 40),(N 83)], trans = 6},
+{fin = [(N 43),(N 83)], trans = 6},
+{fin = [(N 83)], trans = 30},
+{fin = [(N 83)], trans = 31},
+{fin = [(N 83)], trans = 32},
+{fin = [(N 36),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 34},
+{fin = [(N 25),(N 83)], trans = 6},
+{fin = [(N 83)], trans = 36},
+{fin = [(N 83)], trans = 37},
+{fin = [(N 30),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 39},
+{fin = [(N 83)], trans = 40},
+{fin = [(N 22),(N 83)], trans = 6},
+{fin = [(N 83),(N 96)], trans = 42},
+{fin = [(N 83)], trans = 43},
+{fin = [(N 10),(N 83)], trans = 6},
+{fin = [(N 73),(N 96)], trans = 45},
+{fin = [(N 71)], trans = 0},
+{fin = [(N 68),(N 96)], trans = 0},
+{fin = [(N 86),(N 96)], trans = 48},
+{fin = [(N 86)], trans = 48},
+{fin = [(N 66),(N 96)], trans = 0},
+{fin = [(N 64),(N 96)], trans = 0},
+{fin = [(N 62),(N 96)], trans = 0},
 {fin = [(N 96)], trans = 53},
-{fin = [(N 48)], trans = 0},
-{fin = [(N 51)], trans = 0},
+{fin = [(N 79)], trans = 0},
+{fin = [(N 76)], trans = 0},
 {fin = [(N 96)], trans = 56},
 {fin = [], trans = 56},
-{fin = [(N 21)], trans = 0},
-{fin = [(N 94),(N 96)], trans = 0},
-{fin = [(N 94),(N 96)], trans = 60},
-{fin = [(N 94)], trans = 0}])
+{fin = [(N 94)], trans = 0},
+{fin = [(N 6),(N 96)], trans = 0},
+{fin = [(N 6),(N 96)], trans = 60},
+{fin = [(N 6)], trans = 0}])
 end
 structure StartStates =
 	struct
@@ -494,35 +494,35 @@ let fun continue() = lex() in
 
 			(* Application actions *)
 
-  13 => (Tokens.THEN (yypos, yypos + 4))
-| 17 => (Tokens.SUB (yypos, yypos + 3))
-| 21 => let val yytext=yymktext() in Tokens.STRING
+  10 => (Tokens.ADD (yypos, yypos + 3))
+| 14 => (Tokens.MUL (yypos, yypos + 3))
+| 18 => (Tokens.SUB (yypos, yypos + 3))
+| 22 => (Tokens.DIV (yypos, yypos + 3))
+| 25 => (Tokens.EQ (yypos, yypos + 2))
+| 30 => (Tokens.ELSE (yypos, yypos + 4))
+| 36 => (Tokens.TRUE (yypos, yypos + 5))
+| 40 => (Tokens.FUN (yypos, yypos + 3))
+| 43 => (Tokens.FN (yypos, yypos + 2))
+| 46 => (Tokens.IF (yypos, yypos + 2))
+| 51 => (Tokens.THEN (yypos, yypos + 4))
+| 56 => (Tokens.TRUE (yypos, yypos + 4))
+| 6 => (lex())
+| 60 => (Tokens.VAL (yypos, yypos + 3))
+| 62 => (Tokens.LPAREN (yypos, yypos + 1))
+| 64 => (Tokens.RPAREN (yypos, yypos + 1))
+| 66 => (Tokens.COMMA (yypos, yypos + 1))
+| 68 => (Tokens.SEMICOLON (yypos, yypos + 1))
+| 71 => (Tokens.DARROW (yypos, yypos + 2))
+| 73 => (Tokens.EQUAL (yypos, yypos + 1))
+| 76 => (Tokens.HASH1 (yypos,yypos+2))
+| 79 => (Tokens.HASH2 (yypos,yypos+2))
+| 83 => let val yytext=yymktext() in Tokens.ID (yytext, yypos, yypos + String.size yytext) end
+| 86 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
+| 90 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
+| 94 => let val yytext=yymktext() in Tokens.STRING
                 (String.substring(yytext,1,String.size yytext - 2),
                 yypos - String.size yytext + 1,
                 yypos + 1) end
-| 23 => (Tokens.SEMICOLON (yypos, yypos + 1))
-| 25 => (Tokens.RPAREN (yypos, yypos + 1))
-| 29 => (Tokens.MUL (yypos, yypos + 3))
-| 3 => (Tokens.VAL (yypos, yypos + 3))
-| 31 => (Tokens.LPAREN (yypos, yypos + 1))
-| 34 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
-| 38 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
-| 41 => (Tokens.IF (yypos, yypos + 2))
-| 45 => let val yytext=yymktext() in Tokens.ID (yytext, yypos, yypos + String.size yytext) end
-| 48 => (Tokens.HASH2 (yypos,yypos+2))
-| 51 => (Tokens.HASH1 (yypos,yypos+2))
-| 55 => (Tokens.FUN (yypos, yypos + 3))
-| 58 => (Tokens.FN (yypos, yypos + 2))
-| 64 => (Tokens.TRUE (yypos, yypos + 5))
-| 66 => (Tokens.EQUAL (yypos, yypos + 1))
-| 69 => (Tokens.EQ (yypos, yypos + 2))
-| 74 => (Tokens.ELSE (yypos, yypos + 4))
-| 78 => (Tokens.DIV (yypos, yypos + 3))
-| 8 => (Tokens.TRUE (yypos, yypos + 4))
-| 81 => (Tokens.DARROW (yypos, yypos + 2))
-| 83 => (Tokens.COMMA (yypos, yypos + 1))
-| 87 => (Tokens.ADD (yypos, yypos + 3))
-| 94 => (lex())
 | 96 => let val yytext=yymktext() in Tokens.ID (yytext, yypos, yypos + 1) end
 | _ => raise Internal.LexerError
 
