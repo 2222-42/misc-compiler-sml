@@ -6,7 +6,8 @@ structure Tokens = CoreMLLrVals.Tokens
 type token = Tokens.token
 type pos = Tokens.pos
 type lexresult = Tokens.token
-val eof = fn () => Tokens.EOF
+exception Error
+val eof = fn () => Tokens.EOF (0,0)
 fun atoi s = valOf (Int.fromString s)
 
 end (* end of user routines *)
@@ -507,7 +508,7 @@ let fun continue() = lex() in
 | 34 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
 | 38 => let val yytext=yymktext() in Tokens.INT (atoi yytext, yypos, yypos + String.size yytext) end
 | 41 => (Tokens.IF (yypos, yypos + 2))
-| 45 => let val yytext=yymktext() in Tokens.ID (yytext, ypos, ypos + String.size yytext) end
+| 45 => let val yytext=yymktext() in Tokens.ID (yytext, yypos, yypos + String.size yytext) end
 | 48 => (Tokens.HASH2 (yypos,yypos+2))
 | 51 => (Tokens.HASH1 (yypos,yypos+2))
 | 55 => (Tokens.FUN (yypos, yypos + 3))
@@ -518,7 +519,7 @@ let fun continue() = lex() in
 | 74 => (Tokens.ELSE (yypos, yypos + 4))
 | 78 => (Tokens.DIV (yypos, yypos + 3))
 | 8 => (Tokens.TRUE (yypos, yypos + 4))
-| 81 => (Tokens.DARROW (yyos, yypos + 2))
+| 81 => (Tokens.DARROW (yypos, yypos + 2))
 | 83 => (Tokens.COMMA (yypos, yypos + 1))
 | 87 => (Tokens.ADD (yypos, yypos + 3))
 | 94 => (lex())

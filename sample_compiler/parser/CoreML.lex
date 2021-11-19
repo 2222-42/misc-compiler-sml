@@ -2,7 +2,8 @@ structure Tokens = CoreMLLrVals.Tokens
 type token = Tokens.token
 type pos = Tokens.pos
 type lexresult = Tokens.token
-val eof = fn () => Tokens.EOF
+exception Error
+val eof = fn () => Tokens.EOF (0,0)
 fun atoi s = valOf (Int.fromString s)
 
 %%
@@ -32,7 +33,7 @@ ws = "\ " | "\t" | "\r\n" | "\n" | "\r";
 {num} => (Tokens.INT (atoi yytext, yypos, yypos + String.size yytext));
 ~{num} => (Tokens.INT (atoi yytext, yypos, yypos + String.size yytext));
 "if" => (Tokens.IF (yypos, yypos + 2));
-{id} => (Tokens.ID (yytext, ypos, ypos + String.size yytext));
+{id} => (Tokens.ID (yytext, yypos, yypos + String.size yytext));
 "#2" => (Tokens.HASH2 (yypos,yypos+2));
 "#1" => (Tokens.HASH1 (yypos,yypos+2));
 "fun" => (Tokens.FUN (yypos, yypos + 3));
@@ -43,7 +44,7 @@ ws = "\ " | "\t" | "\r\n" | "\n" | "\r";
 
 "else" => (Tokens.ELSE (yypos, yypos + 4));
 "div" => (Tokens.DIV (yypos, yypos + 3));
-"=>" => (Tokens.DARROW (yyos, yypos + 2));
+"=>" => (Tokens.DARROW (yypos, yypos + 2));
 "," => (Tokens.COMMA (yypos, yypos + 1));
 "add" => (Tokens.ADD (yypos, yypos + 3));
 {ws} => (lex());
