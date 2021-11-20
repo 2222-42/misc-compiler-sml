@@ -81,10 +81,11 @@ struct
     (* val addQ : delta -> state -> (state list * state list * Delta) -> (state list * state list * Delta) *)
     fun addQ d A (Q1:state list, Q2:state list, D) =
         let
-            val (Q11, O1) = addS d (A, "a") (Q1, Q2, [])
-            val (Q12, O2) = addS d (A, "b") (Q11, Q2, O1)
+            val (Q11, O1) = addS d (A, "") (Q1, Q2, [])
+            (*val (Q11, O1) = addS d (A, "a") (Q1, Q2, [])
+            val (Q12, O2) = addS d (A, "b") (Q11, Q2, O1)*)
         in
-            (Q12: state list, A::Q2, (A, O2)::D)
+            (Q11: state list, A::Q2, (A, O1)::D)
         end
 
     (* val subsets : delta -> ( state list * state list * Delta ) -> (state list * Delta) *)
@@ -110,13 +111,21 @@ struct
         end
     fun run () =
         let
-            val sampleNFA = {Q = [0, 1, 2], S = ["", "a", "b"],
+            (*val sampleNFA = {Q = [0, 1, 2], S = ["", "a", "b"],
                              delta =
                              [
                                  (0, [("", [0]), ("a", [1]), ("b", [])]), (1, [("", [1]), ("a", [1]), ("b", [1,2])]),
                                  (2, [("", [2]),("a", []), ("b", [])])
                              ],
                              qQ = 0, F = [2]
+                            }*)
+            val sampleNFA = {Q = [0, 1], S = ["S", ""],
+                             delta =
+                             [
+                                 (0, [("", [1])]),
+                                 (1, [("", [])])
+                             ],
+                             qQ = 0, F = [1]
                             }
             val result = toDFA sampleNFA
         in
