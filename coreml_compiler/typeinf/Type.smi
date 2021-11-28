@@ -1,0 +1,8 @@
+_requrie "basis.smi"
+structure Type =
+struct
+    datatype ty = TYVARty of string | INTty | STRINGty | BOOL ty
+                | FUNty of ty * ty | PAIRty of ty * ty
+    val newTy : unit -> ty
+    val tyToString : ty -> string
+end
