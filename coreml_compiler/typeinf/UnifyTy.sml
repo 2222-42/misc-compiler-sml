@@ -2,10 +2,17 @@ structure UnifyTy =
 struct
     open Type TypeUtils
     exception UnifyTy
-    fun FTV ty = SSet.empty (* todo: implement *)
-                             (* やることはtyの中身を見て、その中に変数があったら追加していく *)
-                             (* 追加していくものはTYVARtyのもの、 *)
-                             (* あと、FUNtyやPAIRtyの中身を見て、そこをまた探索する *)
+    fun FTV ty =
+        let
+            fun addTyToFTV ty set =                                             (* やることはtyの中身を見て、その中に変数があったら追加していく *)
+                case ty
+                 of TYVARty string => SSet.add (set, string)                    (* 追加していくものはTYVARtyのもの、 *)
+                  | FUNty (xTy, yTy) => addTyToFTV yTy (addTyToFTV xTy set)     (* あと、FUNtyやPAIRtyの中身を見て、そこをまた探索する *)
+                  | PAIRty (xTy, yTy) => addTyToFTV yTy (addTyToFTV xTy set)
+                  | _ => set
+        in
+            addTyToFTV ty SSet.empty
+        end
     fun occurs (TYVARty tv, ty) = SSet.member (FTV ty, tv)
       | occurs _ = false
     fun rewrite (nil, S) = S
