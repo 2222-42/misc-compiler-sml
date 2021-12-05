@@ -8,6 +8,12 @@ struct
           | STRING string => (emptyTyEnv, STRINGty)
           | TRUE => (emptyTyEnv, BOOLty)
           | FALSE => (emptyTyEnv, BOOLty)
+          | EXPID string =>
+            let
+                val newty = newTy()
+            in
+                (singletonTyEnv(string, newty), newty)
+            end
           | EXPFN (string, exp) =>
             let
                 val (tyEnv, ty) = PTS exp
@@ -27,6 +33,17 @@ struct
                     unionTyEnv (substTyEnv subst tyEnv1, substTyEnv subst tyEnv2)
             in
                 (tyEnv3, substTy subst newty)
+            end
+          | EXPPAIR (exp1, exp2) =>
+            let
+                val (tyEnv1, ty1) = PTS exp1
+                val (tyEnv2, ty2) = PTS exp2
+                val tyEquations = matches (tyEnv1, tyEnv2)
+                val subst = unify (tyEquations)
+                val tyEnv3 =
+                    substTyEnv subst (unionTyEnv(tyEnv1, tyEnv2))
+            in
+                (tyEnv3, PAIRty(substTy subst ty1, substTy subst ty2))
             end
           | EXPPROJ1 exp =>
             let
@@ -70,7 +87,7 @@ struct
             in
                 (unionTyEnv (substTyEnv subst tyEnv1, unionTyEnv(substTyEnv subst tyEnv2, substTyEnv subst tyEnv3)), substTy subst ty2)
             end
-          | _ => raise TypeError
+          (*| _ => (print ("pts error. exp: " ^ Syntax.expToString absyn  ^"\n");raise TypeError)*) (*網羅しているからこれは要らない。*)
     fun typeinf dec =
         let
             val exp =
