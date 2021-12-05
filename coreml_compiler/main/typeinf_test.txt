@@ -1,0 +1,6 @@
+val a = x;
+val b = 1;
+val c = x y;
+val d = (x, x);
+val e = (fn x => x);
+val g = (fn x => 1);
