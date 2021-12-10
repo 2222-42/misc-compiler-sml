@@ -47,4 +47,20 @@ struct
             )
             ^ "}"(* x:y,... といった形の連続 *)
         end
+    fun freshInst ty =
+        case ty
+         of Type.POLYty (tids, ty) =>
+            let
+                val S =
+                    foldr (fn (tid, S) =>
+                              let
+                                  val newty = Type.newTy ()
+                              in
+                                  SEnv.insert (S, tid, newty)
+                              end
+                          ) emptySubst tids
+            in
+                substTy S ty
+            end
+         | _ => ty
 end
