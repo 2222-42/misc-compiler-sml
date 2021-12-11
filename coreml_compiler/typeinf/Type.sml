@@ -16,4 +16,8 @@ struct
           | BOOLty => "bool"
           | FUNty (t1, t2) => "(" ^ tyToString t1 ^ " -> " ^ tyToString t2 ^")"
           | PAIRty (t1, t2) => "(" ^ tyToString t1 ^ ", " ^ tyToString t2 ^ ")"
+          | POLYty (tids, ty) => "[" ^
+                                String.concatWith "," tids ^ "." ^
+                                tyToString ty ^
+                                "]"
 end

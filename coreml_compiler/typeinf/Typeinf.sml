@@ -101,10 +101,10 @@ struct
           | EXPFN (string, exp) =>
             let
                 val ty1 = newTy()
-                val newGamma = SEnv.insert (gamma, string, ty1)
+                val newGamma = SEnv.insert(gamma, string, ty1)
                 val (S, ty2) = W newGamma exp
             in
-                (S, FUNty (substTy S ty1, ty2))
+                (S, FUNty(substTy S ty1, ty2))
             end
           | EXPAPP (exp1, exp2) =>
             let

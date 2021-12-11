@@ -12,6 +12,7 @@ struct
          | Type.BOOLty => ty
          | Type.FUNty (ty1, ty2) => Type.FUNty (substTy subst ty1, substTy subst ty2)
          | Type.PAIRty (ty1, ty2) => Type.PAIRty (substTy subst ty1, substTy subst ty2)
+         | Type.POLYty (list, ty) => Type.POLYty (list, substTy subst ty)
     val emptySubst = (* subst*)
         SEnv.empty
     fun substTyEnv subst tyEnv = (* subst -> tyEnv -> tyEnv*)
@@ -62,5 +63,5 @@ struct
             in
                 substTy S ty
             end
-         | _ => ty
+        |  _ => ty
 end
