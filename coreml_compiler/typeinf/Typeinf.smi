@@ -3,8 +3,11 @@ _require "../parser/Syntax.smi"
 _require "./Type.smi"
 _require "./TypeUtils.smi"
 _require "./UnifyTy.smi"
+_require "compiler/libs/env/main/SSet.smi"
+_require "compiler/libs/env/main/SEnv.smi"
 structure Typeinf =
 struct
     exception TypeError
-    val typeinf : Syntax.dec -> unit
+    val W : TypeUtils.tyEnv -> Syntax.exp -> TypeUtils.subst * Type.ty
+    val typeinf : TypeUtils.tyEnv -> Syntax.dec -> TypeUtils.tyEnv
 end
