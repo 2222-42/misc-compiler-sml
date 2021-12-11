@@ -1,11 +1,12 @@
 structure Top =
 struct
-    fun readAndPrintLoop stream =
+    fun readAndPrintLoop gamma stream =
         let
+            (*val stream = discardSemicolons stream*)
             val (dec, stream) = Parser.doParse stream
-            val _ = Typeinf.typeinf dec
+            val newGamma = Typeinf.typeinf gamma dec
         in
-            readAndPrintLoop stream
+            readAndPrintLoop newGamma stream
         end
     (*fun subTop inStream =
         let
@@ -20,7 +21,7 @@ struct
                                       | _ => TextIO.openIn file
             val stream = Parser.makeStream inStream
         in
-            readAndPrintLoop stream
+            readAndPrintLoop TypeUtils.emptyTyEnv stream
             handle Parser.EOF => ()
                 |  Parser.ParseError => print "Syntax error\n"
                 | Typeinf.TypeError => print "Type error\n";
