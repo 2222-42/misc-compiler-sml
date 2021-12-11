@@ -83,7 +83,7 @@ struct
                 val tyEquations1 = matches (tyEnv1, tyEnv2)
                 val tyEquations2 = matches (tyEnv1, tyEnv3)
                 val tyEquations3 = matches (tyEnv2, tyEnv3)
-                val subst = unify((ty1, INTty) :: (ty2, ty3) :: tyEquations1 @ tyEquations2 @ tyEquations3)
+                val subst = unify((ty1, BOOLty) :: (ty2, ty3) :: tyEquations1 @ tyEquations2 @ tyEquations3)
             in
                 (unionTyEnv (substTyEnv subst tyEnv1, unionTyEnv(substTyEnv subst tyEnv2, substTyEnv subst tyEnv3)), substTy subst ty2)
             end
