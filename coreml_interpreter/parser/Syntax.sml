@@ -17,7 +17,6 @@ struct
              |EXPFIX of string * string * exp
     and dec =
         VAL of string * exp
-        | FUN of string * string * exp
     fun expToString exp =
         case exp
          of EXPID string => string
@@ -49,5 +48,4 @@ struct
     fun decToString dec =
         case dec of
             VAL (x, exp) => "val " ^ x ^ " = " ^ expToString exp
-         | FUN (str1, str2, exp) => "fun " ^ str1 ^ "(" ^ str2 ^ ") = " ^ expToString exp
 end

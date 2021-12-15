@@ -96,7 +96,6 @@ struct
             val (id, exp) =
                 case dec
                  of Syntax.VAL (id, exp) => (id, exp)
-                  | _ => raise TypeError (* todo: funへの対応 *)
             val (subst, ty) = W gamma exp
             val tids = SSet.listItems (FTV ty)
             val newty =
