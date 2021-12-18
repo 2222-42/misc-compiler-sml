@@ -14,5 +14,5 @@ struct
           | STRING str => "\"" ^ str ^ "\""
           | PAIR (v1, v2) => "(" ^ toString v1 ^ "," ^ toString v2 ^ ")"
           | CLS (env, str, exp) => "fn" (*^ str ^ " => " ^ toString exp*)
-          | REC (env, str1, str2, exp) => "rec" (* ^   *)
+          | REC (env, str1, str2, exp) => "fix" (* ^   *)
 end

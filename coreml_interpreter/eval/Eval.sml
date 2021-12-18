@@ -8,7 +8,8 @@ struct
          of S.EXPID string =>
             (case SEnv.find(env, string)
               of SOME v => v
-               | _ => raise RuntimeError)
+               | _ => (print("Error: env is not found.\n");
+                       raise RuntimeError))
           | S.INT int => V.INT int
           | S.STRING string => V.STRING string
           | S.TRUE => V.BOOL true
@@ -23,8 +24,8 @@ struct
                  of V.CLS(env1, x, exp1) => evalExp (SEnv.insert (env1, x, v2)) exp1
                   | V.REC(env1, f, x, exp1) => evalExp (SEnv.insert
                                                             (SEnv.insert (env1, f, v1), x, v2))
-                                                       exp
-                  | _ => raise RuntimeError
+                                                       exp1
+                  | _ => (print ("exp1 is neither CLS or REC\n");raise RuntimeError)
             end
           | S.EXPPAIR (exp1, exp2) => V.PAIR (evalExp env exp1, evalExp env exp2)
           | S.EXPPROJ1 exp =>
@@ -54,14 +55,12 @@ struct
             let
                 val v = evalExp env exp1
             in
-
                 case v
                  of V.BOOL true => evalExp env exp2
                   | V.BOOL false => evalExp env exp3
-                  | _ => raise RuntimeError
+                  | _ => (print ("the value of condition is not bool.\n");raise RuntimeError)
             end
           | S.EXPFIX (string1, string2, exp) => V.REC (env, string1, string2, exp)
-
     fun eval env (S.VAL (id, exp)) =
         let
             val v = evalExp env exp
