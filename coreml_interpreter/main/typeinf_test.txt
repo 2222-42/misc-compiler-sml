@@ -5,5 +5,4 @@ val g = (fn x => 1);
 val p = (f 1, f "smlsharp");
 fun h x = x;
 fun i x = 1;
-fun k = fn x => x + 1;
-fun j x = x + 1;
+val _ = print ("smlsharp");

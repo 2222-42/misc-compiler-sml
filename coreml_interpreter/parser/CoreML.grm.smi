@@ -47,5 +47,6 @@ struct
         val DARROW:  pos * pos -> token
         val COMMA:  pos * pos -> token
         val ADD:  pos * pos -> token
+        val PRINT: pos * pos -> token
     end
 end

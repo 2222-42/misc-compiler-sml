@@ -2,6 +2,7 @@ signature CoreML_TOKENS =
 sig
 type pos
 type token
+val PRINT:  pos * pos -> token
 val VAL:  pos * pos -> token
 val TRUE:  pos * pos -> token
 val THEN:  pos * pos -> token

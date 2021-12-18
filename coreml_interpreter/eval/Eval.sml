@@ -36,6 +36,17 @@ struct
             (case (evalExp env exp)
               of V.PAIR (v1, v2) => v2
                | _ => raise RuntimeError)
+          | S.EXPPRIM1(p,exp) =>
+            let
+                val v = evalExp env exp
+                val s = V.toString(v)
+            in
+                case p of
+                    S.PRINT => (print (Int.toString(String.size(s)));
+                                V.INT (size s)
+                               )
+                 | _ => raise RuntimeError
+            end
           | S.EXPPRIM (p, exp1, exp2) =>
             let
                 val v1 = evalExp env exp1
@@ -50,6 +61,7 @@ struct
                   | S.SUB => V.INT (op - arg)
                   | S.MUL => V.INT (op * arg)
                   | S.DIV => V.INT (op div arg)
+                  | _ => raise RuntimeError
             end
           | S.EXPIF (exp1, exp2, exp3) =>
             let

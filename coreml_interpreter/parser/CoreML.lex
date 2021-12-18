@@ -22,6 +22,7 @@ ws = "\ " | "\t" | "\r\n" | "\n" | "\r";
 "mul" => (Tokens.MUL (yypos, yypos + 3));
 "sub" => (Tokens.SUB (yypos, yypos + 3));
 "div" => (Tokens.DIV (yypos, yypos + 3));
+"print" => (Tokens.PRINT (yypos, yypos + 5));
 "eq" => (Tokens.EQ (yypos, yypos + 2));
 "else" => (Tokens.ELSE (yypos, yypos + 4));
 "false" => (Tokens.TRUE (yypos, yypos + 5));
