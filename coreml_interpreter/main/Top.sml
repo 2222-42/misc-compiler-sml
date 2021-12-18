@@ -1,12 +1,13 @@
 structure Top =
 struct
-    fun readAndPrintLoop gamma stream =
+    fun readAndPrintLoop env gamma stream =
         let
             (*val stream = discardSemicolons stream*)
             val (dec, stream) = Parser.doParse stream
             val newGamma = Typeinf.typeinf gamma dec
+            val newEnv = Eval.eval env dec
         in
-            readAndPrintLoop newGamma stream
+            readAndPrintLoop newEnv newGamma stream
         end
     (*fun subTop inStream =
         let
@@ -21,11 +22,12 @@ struct
                                       | _ => TextIO.openIn file
             val stream = Parser.makeStream inStream
         in
-            readAndPrintLoop TypeUtils.emptyTyEnv stream
+            readAndPrintLoop Value.emptyEnv TypeUtils.emptyTyEnv stream
             handle Parser.EOF => ()
-                |  Parser.ParseError => print "Syntax error\n"
-                | Typeinf.TypeError => print "Type error\n";
+                | Parser.ParseError => print "Syntax error\n"
+                | Typeinf.TypeError => print "Type error\n"
+                | Eval.RuntimeError => print "Runtime error";
             case file of "" => ()
-                      | _ => TextIO.closeIn inStream
+                       | _ => TextIO.closeIn inStream
         end
 end
