@@ -1,0 +1,16 @@
+_require "basis.smi"
+structure Token =
+struct
+    datatype token
+        = EOF | UNDERBAR | ANDALSO | AND | AS | CASE
+        | DO | END | EXCEPTION | FN | FUN | HANDLE | IF
+        | IN | INFIX | INFIXR | NONFIX | LET | LOCAL
+        | OF | OP | OPEN | ORELSE | RAISE | REC
+        | THEN | USE | VAL | WHILE
+        | COMMA | PERIOD | THREEPOINT | COLON | SEMICOLON
+        | EQUALSYM | ARROW | LBRACKET | RBRACKET | BAR
+        | ID of string | STRING of string
+        | REAL of string | SPECIAL of string
+        | INT of string
+    val toString : token -> string
+end

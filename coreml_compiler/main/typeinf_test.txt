@@ -1,4 +1,5 @@
 val f = fn x => x;
+val h = fn x => x + 1;
 val p = (f 1, f "smlsharp");
 val a = x;
 val b = 1;
