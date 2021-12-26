@@ -5,3 +5,5 @@ val g = (fn x => 1);
 val p = (f 1, f "smlsharp");
 fun h x = x;
 fun i x = 1;
+fun j x = add (x, x);
+val k = j 2;
