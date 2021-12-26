@@ -68,13 +68,6 @@ struct
             in
                 (S4, ty3)
             end
-          | EXPPRIM1 (p, exp) =>
-            let
-                val (S1, ty1) = W gamma exp
-            in
-                print (Int.toString(String.size(expToString exp)) ^ "\n");
-                (S1, ty1)
-            end
           | EXPIF (exp1, exp2, exp3) =>
             let
                 val (S1, ty1) = W gamma exp1

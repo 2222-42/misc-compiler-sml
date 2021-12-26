@@ -37,7 +37,6 @@ struct
                                    | MUL => "mul"
                                    | DIV => "div"
                                    | EQ => "eq"
-                                   | _ => ""
             in
                 "prim(" ^ prim ^ ", " ^ expToString exp1 ^ ", " ^ expToString exp2 ^")"
             end
