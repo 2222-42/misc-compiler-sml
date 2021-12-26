@@ -5,7 +5,8 @@ struct
             (*val stream = discardSemicolons stream*)
             val (dec, stream) = Parser.doParse stream
             val newGamma = Typeinf.typeinf gamma dec
-            val newEnv = Eval.eval env dec
+            val namedCode = Comp.compile dec
+            val newEnv = Exec.run env namedCode
         in
             readAndPrintLoop newEnv newGamma stream
         end
@@ -26,7 +27,7 @@ struct
             handle Parser.EOF => ()
                 | Parser.ParseError => print "Syntax error\n"
                 | Typeinf.TypeError => print "Type error\n"
-                | Eval.RuntimeError => print "Runtime error";
+                | Exec.RuntimeError => print "Runtime error";
             case file of "" => ()
                        | _ => TextIO.closeIn inStream
         end

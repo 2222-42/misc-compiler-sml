@@ -3,8 +3,9 @@ _require "../parser/Syntax.smi"
 _require "../parser/Parser.smi"
 _require "../typeinf/Typeinf.smi"
 _require "../typeinf/TypeUtils.smi"
-_require "../eval/Eval.smi"
-_require "../eval/Value.smi"
+_require "../SECD/Exec.smi"
+_require "../SECD/Comp.smi"
+_require "../SECD/Value.smi"
 structure Top =
 struct
     val top : string -> unit
