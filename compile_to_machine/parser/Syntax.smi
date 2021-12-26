@@ -1,7 +1,7 @@
 _require "basis.smi"
 structure Syntax =
 struct
-    datatype prim = EQ | ADD | SUB | MUL | DIV | PRINT
+    datatype prim = EQ | ADD | SUB | MUL | DIV
     datatype exp =
         EXPID of string | INT of int | STRING of string
         | TRUE | FALSE | EXPFN of string * exp
@@ -10,7 +10,6 @@ struct
         | EXPPRIM of prim * exp * exp
         | EXPIF of exp * exp * exp
         | EXPFIX of string * string * exp
-        | EXPPRIM1 of prim * exp
     and dec =
         VAL of string * exp
     val expToString : exp -> string
